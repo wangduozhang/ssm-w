@@ -1,16 +1,14 @@
 package com.iotek.ssm.entity;
 
-import java.util.Date;
-
 /**
- * Created by Administrator on 2018/10/12.
+ * Created by Administrator on 2018/10/13.
  */
-public class Branch {
+public class Job {
     private Integer id;
     private String name;
-    private Date time;
+    private Branch branch;
 
-    public Branch() {
+    public Job() {
     }
 
     public Integer getId() {
@@ -29,20 +27,20 @@ public class Branch {
         this.name = name;
     }
 
-    public Date getTime() {
-        return time;
+    public Branch getBranch() {
+        return branch;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 
     @Override
     public String toString() {
-        return "Branch{" +
+        return "Job{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", time=" + time +
+                ", branch=" + branch +
                 '}';
     }
 }

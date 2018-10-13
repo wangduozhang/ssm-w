@@ -12,6 +12,7 @@ public class Vitae {
     private String phone;
     private String email;
     private Branch branch;//部门
+    private Job job; //职位
     private String appearance;//政治面貌
     private String work;//上份工作
     private String workTime;//工作经验，几年
@@ -26,7 +27,7 @@ public class Vitae {
         return id;
     }
 
-    public Vitae(Integer id, String name, char sex, int age, String schoolling, String phone, String email, Branch branch, String appearance, String work, String workTime, String salary, String bent, Tourist tourist) {
+    public Vitae(Integer id, String name, char sex, int age, String schoolling, String phone, String email, Branch branch, Job job, String appearance, String work, String workTime, String salary, String bent, Tourist tourist) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -35,6 +36,7 @@ public class Vitae {
         this.phone = phone;
         this.email = email;
         this.branch = branch;
+        this.job=job;
         this.appearance = appearance;
         this.work = work;
         this.workTime = workTime;
@@ -151,6 +153,14 @@ public class Vitae {
         this.tourist = tourist;
     }
 
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
+
     @Override
     public String toString() {
         return "Vitae{" +
@@ -162,6 +172,7 @@ public class Vitae {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", branch=" + branch +
+                ", job=" + job +
                 ", appearance='" + appearance + '\'' +
                 ", work='" + work + '\'' +
                 ", workTime='" + workTime + '\'' +

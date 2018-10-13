@@ -13,6 +13,6 @@
 </head>
 <body>
 ${requestScope.get("tourist")}
-<a href="${pageContext.request.contextPath}/vitae/myvitae">我的简历</a>
+<a href="${pageContext.request.contextPath}/vitae/myvitae?id=${requestScope.get("tourist").id}">我的简历</a>
 </body>
 </html>
