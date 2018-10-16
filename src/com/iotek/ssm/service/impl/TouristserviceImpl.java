@@ -22,4 +22,14 @@ public class TouristserviceImpl implements TouristService {
     public Tourist findTouristByNameAndPass(String name, String password) {
         return touristerDao.queryTouristByNameAndPass(name,password);
     }
+
+    @Override
+    public Tourist findTouristById(Integer id) {
+        return touristerDao.queryTouristById(id);
+    }
+
+    @Override
+    public Tourist findTouristByName(String name) {
+        return touristerDao.queryTouristByName(name);
+    }
 }

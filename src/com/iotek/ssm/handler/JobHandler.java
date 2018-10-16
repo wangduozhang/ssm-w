@@ -1,16 +1,13 @@
 package com.iotek.ssm.handler;
-import com.iotek.ssm.entity.Branch;
+import com.alibaba.fastjson.JSON;
 import com.iotek.ssm.entity.Job;
-import com.iotek.ssm.entity.Vitae;
-import com.iotek.ssm.service.BranchService;
-import com.iotek.ssm.service.VitaeService;
+import com.iotek.ssm.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -21,12 +18,12 @@ import java.util.List;
 public class JobHandler {
     @Autowired
     private JobService jobService;
-    @RequestMapping("finjobbybranch")
+    @RequestMapping(value="finjobbybranch",produces={"text/html;charset=UTF-8"})
     @ResponseBody
-    public String deleteStudentById(Integer id){
-        List<Job> jobs = jobService.findJobByBId(id);
-
-
+    public void finJobByBranch(Integer id, PrintWriter printWriter){
+        List<Job> jobs = jobService.findAllJobByBId(id);
+        Object o = JSON.toJSONString(jobs);
+        printWriter.print(o);
     }
 
 }

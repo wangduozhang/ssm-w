@@ -9,4 +9,8 @@ public interface TouristService {
     public void addTourist(Tourist tourist);
 
     Tourist findTouristByNameAndPass(String name, String password);
+
+    Tourist findTouristById(Integer id);
+
+    Tourist findTouristByName(String name);
 }

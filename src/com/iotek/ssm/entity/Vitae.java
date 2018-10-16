@@ -6,7 +6,7 @@ package com.iotek.ssm.entity;
 public class Vitae {
     private Integer id;
     private String name;
-    private char sex;
+    private String sex;
     private int age;
     private String schoolling;//学历
     private String phone;
@@ -23,11 +23,7 @@ public class Vitae {
     public Vitae() {
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public Vitae(Integer id, String name, char sex, int age, String schoolling, String phone, String email, Branch branch, Job job, String appearance, String work, String workTime, String salary, String bent, Tourist tourist) {
+    public Vitae(Integer id, String name, String sex, int age, String schoolling, String phone, String email, Branch branch, Job job, String appearance, String work, String workTime, String salary, String bent, Tourist tourist) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -36,13 +32,17 @@ public class Vitae {
         this.phone = phone;
         this.email = email;
         this.branch = branch;
-        this.job=job;
+        this.job = job;
         this.appearance = appearance;
         this.work = work;
         this.workTime = workTime;
         this.salary = salary;
         this.bent = bent;
         this.tourist = tourist;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setId(Integer id) {
@@ -57,11 +57,11 @@ public class Vitae {
         this.name = name;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -103,6 +103,14 @@ public class Vitae {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 
     public String getAppearance() {
@@ -153,20 +161,12 @@ public class Vitae {
         this.tourist = tourist;
     }
 
-    public Job getJob() {
-        return job;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
-    }
-
     @Override
     public String toString() {
         return "Vitae{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sex=" + sex +
+                ", sex='" + sex + '\'' +
                 ", age=" + age +
                 ", schoolling='" + schoolling + '\'' +
                 ", phone='" + phone + '\'' +

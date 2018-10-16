@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VitaeDao {
     Vitae queryVitaeByTouristId(Integer id);
+
+    void insertVitae(Vitae vitae);
 }

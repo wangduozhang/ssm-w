@@ -9,4 +9,8 @@ import java.util.List;
  */
 public interface BranchService {
     public List<Branch> findAllBranch();
+
+    Branch findBranchByName(String branch);
+
+    Branch findBranchById(Integer branch);
 }

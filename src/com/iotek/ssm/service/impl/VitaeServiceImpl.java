@@ -18,4 +18,9 @@ public class VitaeServiceImpl implements VitaeService {
     public Vitae findVitaeByTouristId(Integer id) {
         return vitaeDao.queryVitaeByTouristId(id);
     }
+
+    @Override
+    public void addVitae(Vitae vitae) {
+        vitaeDao.insertVitae(vitae);
+    }
 }

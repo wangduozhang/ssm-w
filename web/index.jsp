@@ -11,20 +11,45 @@
 <head>
     <title>Title</title>
     <style type="text/css">
+        .wang{
+            color: red;
+            display: none;
+        }
         html,body{
             width:100%;
             height:100%
         }
         body{
             font-family: "华文细黑";
-            background:url("http://img5.imgtn.bdimg.com/it/u=4203575838,2441778357&fm=26&gp=0.jpg") no-repeat;
+            background:url("/img/01.jpg");
+            background-repeat: no-repeat;
             background-size: 100%;
         }
         .wrap{margin:200px auto;width:300px;
             height:400px;}
     </style>
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
+        $(function () {
+            $("form").submit(function(){
+                var name=$("#input1").val();
+                var password=$("#input2").val();
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/tourist/loginajax",
+                    type:"post",
+                    dataType:"text",
+                    data:{"name":name,"password":password},
+                    success:function (data) {
+                        if (data==""){
+                            $(".wang").eq(0).css("display","none");
+                           window.location.href="${pageContext.request.contextPath}/tourist/loginTourist?name="+name+"&password="+password
+                        }
+                    }
+                });
+                $(".wang").eq(0).css("display","inline");
+                return false;
+            })
+        })
 
     </script>
 </head>
@@ -32,10 +57,11 @@
 <div class="wrap">
     <h1>游客登录页面</h1>
     <fieldset>
-        <form action="${pageContext.request.contextPath}/tourist/loginTourist" method="get">
-            <p>用户名: <input type="text" name="name" /><br><br>
-            <p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <input type="text" name="password" /></p><br><br>
-            <input type="submit" value="登录">&nbsp;&nbsp;&nbsp;
+        <form  method="get">
+            <p>用户名: <input id="input1" type="text" name="name" /><br><br>
+            <p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <input id="input2"type="text" name="password" /></p>
+            <span  class="wang">账号或密码不正确</span><br><br>
+            <input id="login" type="submit" value="登录">&nbsp;&nbsp;&nbsp;
             <a href="${pageContext.request.contextPath}/tourist/registTourist">注册</a>
         </form>
     </fieldset>

@@ -12,4 +12,8 @@ public interface TouristerDao {
     public void insertTourist(Tourist tourist);
 
     Tourist queryTouristByNameAndPass(@Param("name") String name, @Param("password") String password);
+
+    Tourist queryTouristById(Integer id);
+
+    Tourist queryTouristByName(String name);
 }

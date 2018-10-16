@@ -19,4 +19,14 @@ public class BranchServiceImpl implements BranchService {
     public List<Branch> findAllBranch() {
         return branchDao.queryAllBranch();
     }
+
+    @Override
+    public Branch findBranchByName(String branch) {
+        return branchDao.queryBranchByName(branch);
+    }
+
+    @Override
+    public Branch findBranchById(Integer branch) {
+        return branchDao.queryBranchById(branch);
+    }
 }

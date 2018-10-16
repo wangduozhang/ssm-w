@@ -11,4 +11,8 @@ import java.util.List;
 @Repository
 public interface BranchDao {
     public List<Branch> queryAllBranch();
+
+    Branch queryBranchByName(String name);
+
+    Branch queryBranchById(Integer id);
 }
