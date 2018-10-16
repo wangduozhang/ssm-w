@@ -57,7 +57,6 @@
                             window.location.href="${pageContext.request.contextPath}/tourist/addtourist?name="+name+"&password="+password
                             alert("注册成功");
                         }else {
-                            alert(1111);
                             $(".wang").eq(1).css("display","inline");
                         }
                     }

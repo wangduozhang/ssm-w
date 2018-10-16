@@ -34,21 +34,34 @@
             $("form").submit(function(){
                 var name=$("#input1").val();
                 var password=$("#input2").val();
-                alert(name);
-                alert(password);
+                if(name==""){
+                    $(".wang").eq(0).css("display","inline");
+                    return false;
+                }else {
+                    $(".wang").eq(0).css("display","none");
+                }
+                if(password==""){
+                    $(".wang").eq(2).css("display","inline");
+                    return false;
+                }else {
+                    $(".wang").eq(2).css("display","none");
+                }
                 $.ajax({
-                    url:"${pageContext.request.contextPath}/admin/loginajax",
+                    url:"${pageContext.request.contextPath}/admin/inputajax",
                     type:"post",
                     dataType:"text",
-                    data:{"name":name,"password":password},
+                    data:{"name":name},
                     success:function (data) {
+                        alert(data);
                         if (data==""){
-                            $(".wang").eq(0).css("display","none");
-                           window.location.href="${pageContext.request.contextPath}/admin/loginAdmin?name="+name+"&password="+password
+                            $(".wang").eq(1).css("display","none");
+                            window.location.href="${pageContext.request.contextPath}/admin/addadmin?name="+name+"&password="+password
+                            alert("注册成功");
+                        }else {
+                            $(".wang").eq(1).css("display","inline");
                         }
                     }
                 });
-                $(".wang").eq(0).css("display","inline");
                 return false;
             })
         })
@@ -57,14 +70,16 @@
 </head>
 <body>
 <div class="wrap">
-    <h1>管理员登录页面</h1>
+    <h1>游客注册页面</h1>
     <fieldset>
-        <form  method="get">
+        <form  method="post">
             <p>用户名: <input id="input1" type="text" name="name" /><br><br>
-            <p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <input id="input2"type="text" name="password" /></p>
-            <span  class="wang">账号或密码不正确</span><br><br>
-            <input id="login" type="submit" value="登录">&nbsp;&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/admin/registAdmin">注册</a>
+            <span class="wang">名字不能为空</span><br>
+            <span class="wang">用户名已存在</span><br>
+            <p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <input id="input2" type="text" name="password" /></p>
+            <span class="wang">密码不能为空</span><br><br>
+            <div style="width:30px;height: auto;background: #4cae4c" ><input type="submit" value="立即注册"></div>
+            <a href="javascript:history.back(-1)">返回</a>
         </form>
     </fieldset>
 </div>

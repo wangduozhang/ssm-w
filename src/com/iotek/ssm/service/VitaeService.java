@@ -9,4 +9,6 @@ public interface VitaeService {
     public Vitae findVitaeByTouristId(Integer id);
 
     void addVitae(Vitae vitae);
+
+    void updateVitae(Vitae vitae);
 }

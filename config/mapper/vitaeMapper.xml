@@ -72,6 +72,26 @@
 		#{tourist.id}
 		)
 	</insert>
+	<update id="updateVitae" parameterType="Vitae">
+		UPDATE
+		vitae
+		SET
+		name=#{name},
+		sex=#{sex},
+		age=#{age},
+		schoolling=#{schoolling},
+		phone=#{phone},
+		email=#{email},
+		b_id=#{branch.id},
+		j_id=#{job.id},
+		appearance=#{appearance},
+		work=#{work},
+		worktime=#{workTime},
+		salary=#{salary},
+		bent=#{bent}
+		WHERE
+		t_id=#{tourist.id}
+	</update>
 		</mapper>
 
 

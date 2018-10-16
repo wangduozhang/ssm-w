@@ -43,31 +43,37 @@
     </script>
 </head>
 <body>
-<c:if test="${requestScope.get('viate')!=null}">
-    <h1>你已经添加过简历</h1>
+<c:if test="${requestScope.get('vitae')==null}">
+    <h1>你还没有添加过简历</h1>
 </c:if>
-<c:if test="${requestScope.get('viate')==null}">
-<form action="${pageContext.request.contextPath}/vitae/insertmyvitae" method="post">
-    <input type="hidden" name="tid" value="${param.id}"/>
+<c:if test="${requestScope.get('vitae')!=null}">
+<form action="${pageContext.request.contextPath}/vitae/updatemyvitae" method="post">
+    <input type="hidden" name="tid" value="${requestScope.get("tid")}"/>
     <table width="800" border="1" align="center" cellpadding="10" cellspacing="0">
     <caption><h3>个人简历</h3></caption>
     <tr>
         <td colspan="2" bgcolor="#9FCDEA">个人资料</td>
     </tr>
     <tr>
-        <td>姓&nbsp;&nbsp;名：<input type="text" name="name"></td>
-         <td>性 &nbsp;&nbsp;别：<input  type="radio"  name="sex" value="男">男
-
-            <input  type="radio"  name="sex" value="女">女
+        <td>姓&nbsp;&nbsp;名：<input type="text" name="name" value="${requestScope.vitae.name}"></td>
+         <td>性 &nbsp;&nbsp;别：
+             <c:if test="${requestScope.vitae.sex eq'男'}">
+             <input  type="radio"  name="sex" value="男" checked="checked">男
+             <input  type="radio"  name="sex" value="女" >女
+             </c:if>
+             <c:if test="${requestScope.vitae.sex eq'女'}">
+                 <input  type="radio"  name="sex" value="男" >男
+                 <input  type="radio"  name="sex" value="女" checked="checked">女
+             </c:if>
         </td>
     </tr>
     <tr>
-        <td>年 &nbsp;&nbsp;龄：<input type="number" name="age"></td>
-        <td>学 &nbsp;&nbsp;历：<input type="text" name="schoolling"></td>
+        <td>年 &nbsp;&nbsp;龄：<input type="number" name="age" value="${requestScope.vitae.age}"></td>
+        <td>学 &nbsp;&nbsp;历：<input type="text" name="schoolling" value="${requestScope.vitae.schoolling}"></td>
     </tr>
     <tr>
-        <td>联系方式<input type="text" name="phone"></td>
-        <td>e-mail&nbsp;<input type="text" name="email"></td>
+        <td>联系方式<input type="text" name="phone" value="${requestScope.vitae.phone}"></td>
+        <td>e-mail&nbsp;<input type="text" name="email" value="${requestScope.vitae.email}"></td>
     </tr>
     <tr>
 
@@ -75,25 +81,32 @@
 
         <td>应聘职位：<select id="first" class="easyui-combobox" name="branches"
                          style="width:200px;" onchange="firstSel()">
-            <c:forEach items="${requestScope.branches }" var="branch">
-                <option value="${branch.id}">${branch.name}</option>
+            <c:forEach items="${requestScope.branches }" var="branchs">
+                <c:if test="${requestScope.vitae.branch.id==branchs.id}">
+                <option value="${branchs.id}" selected="selected">${branchs.name}</option>
+                </c:if>
+                <c:if test="${requestScope.vitae.branch.id!=branchs.id}">
+                    <option value="${branchs.id}">${branchs.name}</option>
+                </c:if>
             </c:forEach>
 
         </select>
-            <select id="second" class="easyui-combobox" name="jobs" style="width:200px;"></select>
+            <select id="second" class="easyui-combobox" name="jobs" style="width:200px;">
+
+            </select>
             </td>
 
 
 
-        <td>政治面貌：<input type="text" name="appearance"></td>
+        <td>政治面貌：<input type="text" name="appearance" value="${requestScope.vitae.appearance}"></td>
     </tr>
     <tr>
-        <td>上份工作：<input type="text" name="work"></td>
-        <td>工作经验：<input type="text" name="workTime"></td>
+        <td>上份工作：<input type="text" name="work" value="${requestScope.vitae.work}"></td>
+        <td>工作经验：<input type="text" name="workTime" value="${requestScope.vitae.workTime}"></td>
     </tr>
     <tr>
-        <td>期望薪资：<input type="text" name="salary"></td>
-        <td>兴趣爱好：<input type="text" name="bent"></td>
+        <td>期望薪资：<input type="text" name="salary" value="${requestScope.vitae.salary}"></td>
+        <td>兴趣爱好：<input type="text" name="bent" value="${requestScope.vitae.bent}"></td>
     </tr>
     <tr>
         <td><input type="submit" value="提交"></td>

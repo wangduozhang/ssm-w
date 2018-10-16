@@ -11,4 +11,6 @@ public interface VitaeDao {
     Vitae queryVitaeByTouristId(Integer id);
 
     void insertVitae(Vitae vitae);
+
+    void updateVitae(Vitae vitae);
 }

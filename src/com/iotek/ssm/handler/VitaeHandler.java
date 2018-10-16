@@ -37,21 +37,46 @@ public class VitaeHandler {
     }
 
     @RequestMapping("addvitae")
-    public String addVitae( Model model){
+    public String addVitae( Model model,Integer tid){
+        Vitae vitae = vitaeService.findVitaeByTouristId(tid);
         List<Branch> branches = branchService.findAllBranch();
+        model.addAttribute("viate",vitae);
         model.addAttribute("branches",branches);
         return "vitae/addmyvitae";
     }
 
     @RequestMapping("insertmyvitae")
-    public void addMyVitae(Vitae vitae,Integer branches,Integer jobs,Integer tid){
+    public String addMyVitae(Vitae vitae,Integer branches,Integer jobs,Integer tid){
         Branch branch1 = branchService.findBranchById(branches);
         Job job1 = jobService.findJobById(jobs);
         Tourist tourist = touristService.findTouristById(tid);
         vitae.setBranch(branch1);
         vitae.setJob(job1);
         vitae.setTourist(tourist);
-        System.out.println(vitae);
         vitaeService.addVitae(vitae);
+        return "vitae/addmyvitae";
+    }
+
+    @RequestMapping("editvitae")
+    public String editVitae( Model model,Integer tid){
+        Vitae vitae = vitaeService.findVitaeByTouristId(tid);
+        List<Branch> branches = branchService.findAllBranch();
+        model.addAttribute("vitae",vitae);
+        model.addAttribute("branches",branches);
+        model.addAttribute("tid",tid);
+        return "vitae/editmyvitae";
+    }
+
+
+    @RequestMapping("updatemyvitae")
+    public String updateMyVitae(Vitae vitae,Integer branches,Integer jobs,Integer tid){
+        Branch branch1 = branchService.findBranchById(branches);
+        Job job1 = jobService.findJobById(jobs);
+        Tourist tourist = touristService.findTouristById(tid);
+        vitae.setBranch(branch1);
+        vitae.setJob(job1);
+        vitae.setTourist(tourist);
+        vitaeService.updateVitae(vitae);
+        return "forward:editvitae";
     }
 }

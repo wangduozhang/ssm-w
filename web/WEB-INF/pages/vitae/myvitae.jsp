@@ -10,45 +10,46 @@
 <html>
 <head>
     <title>Title</title>
-
-    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
-    <script>
-        $(function() {
-            $("#second").hide(); //初始化的时候第二个下拉列表隐藏
-        });
-        function firstSel() {//如果第一个下拉列表的值改变则调用此方法
-            var orderTypeId = $("#first").val();//得到第一个下拉列表的值
-            if(orderTypeId!=null && "" != orderTypeId){
-                //通过ajax传入后台，把orderTypeName数据传到后端
-                $.ajax({
-                    url:"${pageContext.request.contextPath}/job/finjobbybranch",
-                    type:"get",
-                    dataType:"json",
-                    data:{"id":orderTypeId},
-                    success:function (data) {
-                        var res = JSON.stringify(data);
-                        var option;
-                        $.each(data,function(i,n){//循环，i为下标从0开始，n为集合中对应的第i个对象
-                            option += "<option value='"+n.id+"'>"+n.name+"</option>"
-                        });
-                        $("#second").html(option);//将循环拼接的字符串插入第二个下拉列表
-                        $("#second").show();//把第二个下拉列表展示
-                    }
-
-                })
-            }else {
-                $("#second").hide();
-            }
-        };
-
-    </script>
 </head>
 <body>
 <c:if test="${requestScope.get('vitae')==null}">
     <h1>你还没有添加简历</h1>
 </c:if>
 <c:if test="${requestScope.get('vitae')!=null}">
-
+    <table width="800" border="1" align="center" cellpadding="10" cellspacing="0">
+        <caption><h3>个人简历</h3></caption>
+        <tr>
+            <td colspan="2" bgcolor="#9FCDEA">个人资料</td>
+        </tr>
+        <tr>
+            <td>姓&nbsp;&nbsp;名：${requestScope.get("vitae").name}</td>
+            <td>性 &nbsp;&nbsp;别：${requestScope.get("vitae").sex}</td>
+        </tr>
+        <tr>
+            <td>年 &nbsp;&nbsp;龄：${requestScope.get("vitae").age}</td>
+            <td>学 &nbsp;&nbsp;历：${requestScope.get("vitae").schoolling}</td>
+        </tr>
+        <tr>
+            <td>联系方式${requestScope.get("vitae").phone}</td>
+            <td>e-mail&nbsp;${requestScope.get("vitae").email}</td>
+        </tr>
+        <tr>
+            <td>应聘职位：${requestScope.get("vitae").branch.name}&nbsp;${requestScope.get("viate").job.name}</td>
+            <td>政治面貌：${requestScope.get("vitae").appearance}</td>
+        </tr>
+        <tr>
+            <td>上份工作：${requestScope.get("vitae").work}</td>
+            <td>工作经验：${requestScope.get("vitae").workTime}</td>
+        </tr>
+        <tr>
+            <td>期望薪资：${requestScope.get("vitae").salary}</td>
+            <td>兴趣爱好：${requestScope.get("vitae").bent}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <a href="javascript:history.back(-1)">返回</a></td>
+        </tr>
+    </table>
 </c:if>
 </body>
 </html>

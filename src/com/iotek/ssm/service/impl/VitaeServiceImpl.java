@@ -23,4 +23,9 @@ public class VitaeServiceImpl implements VitaeService {
     public void addVitae(Vitae vitae) {
         vitaeDao.insertVitae(vitae);
     }
+
+    @Override
+    public void updateVitae(Vitae vitae) {
+        vitaeDao.updateVitae(vitae);
+    }
 }
