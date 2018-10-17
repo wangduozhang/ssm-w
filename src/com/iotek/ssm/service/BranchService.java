@@ -1,6 +1,7 @@
 package com.iotek.ssm.service;
 
 import com.iotek.ssm.entity.Branch;
+import com.iotek.ssm.entity.Job;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface BranchService {
     Branch findBranchByName(String branch);
 
     Branch findBranchById(Integer branch);
+
+    void insertBranch(Branch branch);
+
 }

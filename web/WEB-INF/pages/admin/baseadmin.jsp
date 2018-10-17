@@ -52,25 +52,37 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="ul1">
-                <li class="active"><a href="${pageContext.request.contextPath}/vitae/findmyvitae?id=${requestScope.get("tourist").id}">查看简历 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">发布招聘信息</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/vitae/findvitaebystate">浏览简历 <span class="sr-only">(current)</span></a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">招聘信息管理管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/recruit/addrecruit">发布招聘信息</a></li>
+                        <li><a href="lookTheResume">查看所有已发布招聘信息</a></li>
+                    </ul>
+                </li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">部门管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/vitae/addvitae?tid=${requestScope.get("tourist").id}">添加部门</a></li>
-                        <li><a href="lookTheResume">删除部门</a></li>
-                        <li><a href="${pageContext.request.contextPath}/vitae/editvitae?tid=${requestScope.get("tourist").id}">修改部门</a></li>
-                        <li role="separator" class="divider"></li>
+                        <li><a href="${pageContext.request.contextPath}/branch/addbranch">添加部门</a></li>
+                        <li><a href="lookTheResume">查看所有部门</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">职位管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/vitae/addvitae?tid=${requestScope.get("tourist").id}">添加职位</a></li>
-                        <li><a href="lookTheResume">删除职位</a></li>
-                        <li><a href="${pageContext.request.contextPath}/vitae/editvitae?tid=${requestScope.get("tourist").id}">修改职位</a></li>
-                        <li role="separator" class="divider"></li>
+                        <li><a href="${pageContext.request.contextPath}/job/addjob">添加职位</a></li>
+                        <li><a href="lookTheResume">查看所有职位</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">员工管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/vitae/addvitae?tid=${requestScope.get("tourist").id}">添加员工</a></li>
+                        <li><a href="lookTheResume">查看所有员工员工</a></li>
                     </ul>
                 </li>
             </ul>

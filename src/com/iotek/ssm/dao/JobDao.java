@@ -16,4 +16,6 @@ public interface JobDao {
     List<Job> queryAllJobByBId(Integer id);
 
     Job queryJobById(Integer id);
+
+    void insertJob(Job job);
 }

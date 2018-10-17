@@ -15,4 +15,6 @@ public interface BranchDao {
     Branch queryBranchByName(String name);
 
     Branch queryBranchById(Integer id);
+
+    void insertBranch(Branch branch);
 }

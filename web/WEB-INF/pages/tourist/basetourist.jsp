@@ -54,15 +54,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="ul1">
                 <li class="active"><a href="${pageContext.request.contextPath}/vitae/findmyvitae?id=${requestScope.get("tourist").id}">我的简历 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">浏览招聘信息</a></li>
+                <li><a href="${pageContext.request.contextPath}/recruit/findallrecruit?tid=${requestScope.get("tourist").id}">浏览招聘信息</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">简历管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="${pageContext.request.contextPath}/vitae/addvitae?tid=${requestScope.get("tourist").id}">添加简历</a></li>
                         <li><a href="lookTheResume">删除简历</a></li>
                         <li><a href="${pageContext.request.contextPath}/vitae/editvitae?tid=${requestScope.get("tourist").id}">修改简历</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">投简历</a></li>
                         <li role="separator" class="divider"></li>
                     </ul>
                 </li>

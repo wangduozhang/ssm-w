@@ -48,7 +48,7 @@
 </c:if>
 <c:if test="${requestScope.get('viate')==null}">
 <form action="${pageContext.request.contextPath}/vitae/insertmyvitae" method="post">
-    <input type="hidden" name="tid" value="${param.id}"/>
+    <input type="hidden" name="tid" value="${requestScope.tid}"/>
     <table width="800" border="1" align="center" cellpadding="10" cellspacing="0">
     <caption><h3>个人简历</h3></caption>
     <tr>

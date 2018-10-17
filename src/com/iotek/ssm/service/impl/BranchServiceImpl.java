@@ -29,4 +29,9 @@ public class BranchServiceImpl implements BranchService {
     public Branch findBranchById(Integer branch) {
         return branchDao.queryBranchById(branch);
     }
+
+    @Override
+    public void insertBranch(Branch branch) {
+        branchDao.insertBranch(branch);
+    }
 }

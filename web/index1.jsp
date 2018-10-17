@@ -34,8 +34,6 @@
             $("form").submit(function(){
                 var name=$("#input1").val();
                 var password=$("#input2").val();
-                alert(name);
-                alert(password);
                 $.ajax({
                     url:"${pageContext.request.contextPath}/admin/loginajax",
                     type:"post",

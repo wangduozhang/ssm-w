@@ -25,6 +25,19 @@
 		WHERE
 		id=#{id}
 	</select>
+	<insert id="insertJob" parameterType="Job">
+		INSERT
+		INTO
+		job(
+		name,
+		time,
+		b_id
+		)VALUES (
+		#{name},
+		#{time},
+		#{branch.id}
+		)
+	</insert>
 </mapper>
 
 

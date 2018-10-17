@@ -2,6 +2,8 @@ package com.iotek.ssm.service;
 
 import com.iotek.ssm.entity.Vitae;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/10/12.
  */
@@ -11,4 +13,7 @@ public interface VitaeService {
     void addVitae(Vitae vitae);
 
     void updateVitae(Vitae vitae);
+
+    List<Vitae> findVitaeByState();
+
 }

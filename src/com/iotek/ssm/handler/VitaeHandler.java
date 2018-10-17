@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class VitaeHandler {
     public String addVitae( Model model,Integer tid){
         Vitae vitae = vitaeService.findVitaeByTouristId(tid);
         List<Branch> branches = branchService.findAllBranch();
+        model.addAttribute("tid",tid);
         model.addAttribute("viate",vitae);
         model.addAttribute("branches",branches);
         return "vitae/addmyvitae";
@@ -53,6 +55,7 @@ public class VitaeHandler {
         vitae.setBranch(branch1);
         vitae.setJob(job1);
         vitae.setTourist(tourist);
+        vitae.setState("未投递");
         vitaeService.addVitae(vitae);
         return "vitae/addmyvitae";
     }
@@ -78,5 +81,31 @@ public class VitaeHandler {
         vitae.setTourist(tourist);
         vitaeService.updateVitae(vitae);
         return "forward:editvitae";
+    }
+
+    @RequestMapping("resume")
+    public String resume(Integer tid){
+        Vitae vitae = vitaeService.findVitaeByTouristId(tid);
+        vitae.setState("已投递");
+        vitaeService.updateVitae(vitae);
+        return "redirect:/recruit/findallrecruit";
+    }
+
+    @RequestMapping("findvitaebystate")
+    public String findVitaeByState(Model model){
+        List<Vitae> vitaes = vitaeService.findVitaeByState();
+        model.addAttribute("vitaes",vitaes);
+        return "vitae/showallvitae";
+    }
+
+    @RequestMapping("readvitae")
+    @ResponseBody
+    public void readVitae(Integer tid){
+        System.out.println(tid+"kkkkkkkkkk");
+        Vitae vitae = vitaeService.findVitaeByTouristId(tid);
+        vitae.setRead("已阅");
+        System.out.println(vitae);
+        vitaeService.updateVitae(vitae);
+        System.out.println("jjjjjjjjjjjjj");
     }
 }

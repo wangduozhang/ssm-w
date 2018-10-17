@@ -19,7 +19,8 @@ public class Vitae {
     private String salary;//期望薪资
     private String bent;// 兴趣爱好
     private Tourist tourist;
-
+    private String state;//显示已投递和未投递
+    private String read;//显示阅和已阅
     public Vitae() {
     }
 
@@ -161,6 +162,23 @@ public class Vitae {
         this.tourist = tourist;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getRead() {
+        return read;
+    }
+
+    public void setRead(String read) {
+        this.read = read;
+    }
+
+
     @Override
     public String toString() {
         return "Vitae{" +
@@ -179,6 +197,8 @@ public class Vitae {
                 ", salary='" + salary + '\'' +
                 ", bent='" + bent + '\'' +
                 ", tourist=" + tourist +
+                ", state='" + state + '\'' +
+                ", read='" + read + '\'' +
                 '}';
     }
 }

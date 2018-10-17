@@ -13,4 +13,6 @@ public interface JobService {
     Job findJobByName(String job);
 
     Job findJobById(Integer job);
+
+    void insertJob(Job job);
 }

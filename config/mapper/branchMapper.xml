@@ -23,6 +23,17 @@
 		WHERE
 		id=#{id}
 	</select>
+	<insert id="insertBranch" parameterType="Branch">
+		INSERT
+		INTO
+		branch(
+		name,
+		time
+		)VALUES (
+		#{name},
+		#{time}
+		)
+	</insert>
 </mapper>
 
 

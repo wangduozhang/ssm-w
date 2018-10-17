@@ -3,6 +3,8 @@ package com.iotek.ssm.dao;
 import com.iotek.ssm.entity.Vitae;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/10/12.
  */
@@ -13,4 +15,7 @@ public interface VitaeDao {
     void insertVitae(Vitae vitae);
 
     void updateVitae(Vitae vitae);
+
+    List<Vitae> queryVitaeByState();
+
 }

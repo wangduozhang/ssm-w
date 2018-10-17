@@ -2,41 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.iotek.ssm.dao.VitaeDao">
 	<select id="queryVitaeByTouristId" resultType="Vitae" parameterType="int">
-		SELECT
-		v.id,
-		v.name,
-		v.sex,
-		v.age,
-		v.schoolling,
-		v.phone,
-		v.email,
-		b.id "branch.id",
-		b.name "branch.name",
-		b.time "branch.time",
-		j.id "job.id",
-		j.name "job.name",
-		v.appearance,
-		v.work,
-		v.worktime,
-		v.salary,
-		v.bent,
-		t.id "tourist.id",
-		t.name "tourist.name",
-		t.password "tourist.password"
-		FROM
-		vitae v,
-		branch b,
-		job j,
-		tourist t
-		WHERE
-		v.b_id=b.id
-		AND
-		v.j_id=j.id
-		AND
-		v.t_id=t.id
-		AND
-		v.t_id=#{id}
-		</select>
+	SELECT
+	v.id,
+	v.name,
+	v.sex,
+	v.age,
+	v.schoolling,
+	v.phone,
+	v.email,
+	b.id "branch.id",
+	b.name "branch.name",
+	b.time "branch.time",
+	j.id "job.id",
+	j.name "job.name",
+	v.appearance,
+	v.work,
+	v.worktime,
+	v.salary,
+	v.bent,
+	v.state,
+	t.id "tourist.id",
+	t.name "tourist.name",
+	t.password "tourist.password"
+	FROM
+	vitae v,
+	branch b,
+	job j,
+	tourist t
+	WHERE
+	v.b_id=b.id
+	AND
+	v.j_id=j.id
+	AND
+	v.t_id=t.id
+	AND
+	v.t_id=#{id}
+</select>
 
 	<insert id="insertVitae" parameterType="Vitae">
 		INSERT INTO
@@ -54,6 +55,7 @@
 		worktime,
 		salary,
 		bent,
+		state,
 		t_id
 		)VALUES (
 		#{name},
@@ -69,6 +71,7 @@
 		#{workTime},
 		#{salary},
 		#{bent},
+		#{state},
 		#{tourist.id}
 		)
 	</insert>
@@ -88,11 +91,50 @@
 		work=#{work},
 		worktime=#{workTime},
 		salary=#{salary},
-		bent=#{bent}
+		bent=#{bent},
+		state=#{state}
 		WHERE
 		t_id=#{tourist.id}
 	</update>
-		</mapper>
+
+	<select id="queryVitaeByState" resultType="Vitae">
+	SELECT
+	v.id,
+	v.name,
+	v.sex,
+	v.age,
+	v.schoolling,
+	v.phone,
+	v.email,
+	b.id "branch.id",
+	b.name "branch.name",
+	b.time "branch.time",
+	j.id "job.id",
+	j.name "job.name",
+	v.appearance,
+	v.work,
+	v.worktime,
+	v.salary,
+	v.bent,
+	v.state,
+	t.id "tourist.id",
+	t.name "tourist.name",
+	t.password "tourist.password"
+	FROM
+	vitae v,
+	branch b,
+	job j,
+	tourist t
+	WHERE
+	v.b_id=b.id
+	AND
+	v.j_id=j.id
+	AND
+	v.t_id=t.id
+	AND
+	v.state='已投递'
+	</select>
+</mapper>
 
 
 

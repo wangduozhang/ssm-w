@@ -30,4 +30,9 @@ public class JobServiceImpl implements JobService {
     public Job findJobById(Integer job) {
         return jobDao.queryJobById(job);
     }
+
+    @Override
+    public void insertJob(Job job) {
+        jobDao.insertJob(job);
+    }
 }
