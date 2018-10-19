@@ -16,4 +16,7 @@ public interface VitaeService {
 
     List<Vitae> findVitaeByState();
 
+    void resumeVitae(Integer tid);
+
+    void redVitae(Integer tid);
 }

@@ -20,26 +20,8 @@ public class Vitae {
     private String bent;// 兴趣爱好
     private Tourist tourist;
     private String state;//显示已投递和未投递
-    private String read;//显示阅和已阅
+    private String red;//显示阅和已阅
     public Vitae() {
-    }
-
-    public Vitae(Integer id, String name, String sex, int age, String schoolling, String phone, String email, Branch branch, Job job, String appearance, String work, String workTime, String salary, String bent, Tourist tourist) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.schoolling = schoolling;
-        this.phone = phone;
-        this.email = email;
-        this.branch = branch;
-        this.job = job;
-        this.appearance = appearance;
-        this.work = work;
-        this.workTime = workTime;
-        this.salary = salary;
-        this.bent = bent;
-        this.tourist = tourist;
     }
 
     public Integer getId() {
@@ -170,14 +152,13 @@ public class Vitae {
         this.state = state;
     }
 
-    public String getRead() {
-        return read;
+    public String getRed() {
+        return red;
     }
 
-    public void setRead(String read) {
-        this.read = read;
+    public void setRed(String red) {
+        this.red = red;
     }
-
 
     @Override
     public String toString() {
@@ -198,7 +179,7 @@ public class Vitae {
                 ", bent='" + bent + '\'' +
                 ", tourist=" + tourist +
                 ", state='" + state + '\'' +
-                ", read='" + read + '\'' +
+                ", red='" + red + '\'' +
                 '}';
     }
 }

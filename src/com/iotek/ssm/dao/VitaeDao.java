@@ -18,4 +18,7 @@ public interface VitaeDao {
 
     List<Vitae> queryVitaeByState();
 
+    void resumeVitae(Integer tid);
+
+    void redVitae(Integer tid);
 }

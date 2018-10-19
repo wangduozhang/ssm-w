@@ -35,4 +35,14 @@ public class VitaeServiceImpl implements VitaeService {
     public List<Vitae> findVitaeByState() {
         return vitaeDao.queryVitaeByState();
     }
+
+    @Override
+    public void resumeVitae(Integer tid) {
+        vitaeDao.resumeVitae(tid);
+    }
+
+    @Override
+    public void redVitae(Integer tid) {
+        vitaeDao.redVitae(tid);
+    }
 }

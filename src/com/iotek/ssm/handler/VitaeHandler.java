@@ -85,9 +85,7 @@ public class VitaeHandler {
 
     @RequestMapping("resume")
     public String resume(Integer tid){
-        Vitae vitae = vitaeService.findVitaeByTouristId(tid);
-        vitae.setState("已投递");
-        vitaeService.updateVitae(vitae);
+        vitaeService.resumeVitae(tid);
         return "redirect:/recruit/findallrecruit";
     }
 
@@ -98,14 +96,9 @@ public class VitaeHandler {
         return "vitae/showallvitae";
     }
 
-    @RequestMapping("readvitae")
+    @RequestMapping("redvitae")
     @ResponseBody
-    public void readVitae(Integer tid){
-        System.out.println(tid+"kkkkkkkkkk");
-        Vitae vitae = vitaeService.findVitaeByTouristId(tid);
-        vitae.setRead("已阅");
-        System.out.println(vitae);
-        vitaeService.updateVitae(vitae);
-        System.out.println("jjjjjjjjjjjjj");
+    public void redVitae(Integer tid){
+       vitaeService.redVitae(tid);
     }
 }

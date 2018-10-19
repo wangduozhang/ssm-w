@@ -19,7 +19,7 @@
                 $t=$(id);
                 var tid=$t.val();
                 $.ajax({
-                    url:"${pageContext.request.contextPath}/vitae/readvitae",
+                    url:"${pageContext.request.contextPath}/vitae/redvitae",
                     type:"post",
                     data:{"tid":tid}
                 });
@@ -60,10 +60,15 @@
         </tr>
         <tr>
             <td>
-                <input type="hidden" value="${vitaes.id}">
-                <a class="a" href="#">阅</a>
+                <c:if test="${vitaes.red=='已阅'}">
+                    <span>已阅</span>
+                </c:if>
+                <c:if test="${vitaes.red!='已阅'}">
+                    <input type="hidden" value="${vitaes.id}">
+                    <a class="a" href="#">阅</a>
+                </c:if>
             </td>
-            <td><a>邀请面试</a></td>
+            <td><a href="${pageContext.request.contextPath}/interview/addinterview?tid=${vitaes.tourist.id}">邀请面试</a></td>
         </tr>
     </table><br>
 </c:forEach>
