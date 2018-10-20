@@ -10,4 +10,9 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> findAllEmployee();
 
+    void addEmployee(Employee employee);
+
+    Employee findEmployeeByNameAndPass(String name, String password);
+
+    Employee findEmployeeById(Integer id);
 }

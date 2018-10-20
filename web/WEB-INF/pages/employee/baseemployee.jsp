@@ -19,24 +19,28 @@
             background-repeat: repeat-x;
         }
         body{
-            background-image: url("/img/11.jpg");
+            background-image: url("/img/09.jpg");
             background-repeat: repeat-x;
             background-size: 100%;
         }
     </style>
-    <script>
+    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
         $(function () {
-            $("#ul1 li a").each(function () {
-                var $this = $(this);
-                if($this[0].href==String(window.location)){
-                    $("#ul1 li").removeClass("active");
-                    $this.parent().addClass("active");  //active表示被选中效果的类名
-                }
-            }) 
+            $("#a1").click(function () {
+                var id = $("#input").val();
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/work/goajax",
+                    type:"post",
+                    data:{"id":id}
+                });
+            })
         })
     </script>
+
 </head>
 <body>
+<input id="input" type="hidden" value="${requestScope.get("employee").id}">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,14 +50,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span class="icon-bar" style="color:red">当前管理员 ：${requestScope.get("admin").name}</span>
+            <span class="icon-bar" style="color:red">当前员工 ：${requestScope.get("employee").name}</span>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="ul1">
-                <li class="active"><a href="${pageContext.request.contextPath}/vitae/findvitaebystate">浏览简历 <span class="sr-only">(current)</span></a></li>
-
+                <li  class="active"><a  id="a1" href="#">上班打卡 <span class="sr-only">(current)</span></a></li>
+                <li  class="active"><a  id="a2" href="#">下班打卡 <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">招聘信息管理管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu">

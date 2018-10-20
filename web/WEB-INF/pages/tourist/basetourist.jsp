@@ -55,6 +55,7 @@
             <ul class="nav navbar-nav" id="ul1">
                 <li class="active"><a href="${pageContext.request.contextPath}/vitae/findmyvitae?id=${requestScope.get("tourist").id}">我的简历 <span class="sr-only">(current)</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/recruit/findallrecruit?tid=${requestScope.get("tourist").id}">浏览招聘信息</a></li>
+                <li><a href="${pageContext.request.contextPath}/interview/findinterviewbytid?tid=${requestScope.get("tourist").id}">浏览面试信息</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">简历管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu">

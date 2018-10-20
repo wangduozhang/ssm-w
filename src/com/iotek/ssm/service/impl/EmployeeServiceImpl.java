@@ -19,4 +19,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findAllEmployee() {
         return employeeDao.queryAllEmployee();
     }
+
+    @Override
+    public void addEmployee(Employee employee) {
+        employeeDao.insertEmployee(employee);
+    }
+
+    @Override
+    public Employee findEmployeeByNameAndPass(String name, String password) {
+        return employeeDao.queryEmployeeByNameAndPass(name,password);
+    }
+
+    @Override
+    public Employee findEmployeeById(Integer id) {
+        return employeeDao.queryEmployeeById(id);
+    }
 }

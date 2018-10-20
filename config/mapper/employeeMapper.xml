@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.iotek.ssm.dao.EmployeeDao">
+	<select id="queryAllEmployee" resultType="Employee">
+		SELECT
+		*
+		FROM
+		employee
+	</select>
+	<insert id="insertEmployee" parameterType="Employee">
+		INSERT
+		INTO
+		employee(
+		name,
+		password,
+		b_id,
+		j_id
+		)VALUES (
+		#{name},
+		#{password},
+		#{branch.id},
+		#{job.id}
+		)
+	</insert>
+
+	<select id="queryEmployeeByNameAndPass"  resultType="Employee">
+		SELECT
+		 id,
+		 name
+		 FROM
+		 employee
+		 WHERE
+		 name=#{name}
+		 AND
+		 password=#{password}
+	</select>
+	<select id="queryEmployeeById" parameterType="int" resultType="Employee">
+		SELECT
+		id,
+		name
+		FROM
+		employee
+		WHERE
+		id=#{id}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+		

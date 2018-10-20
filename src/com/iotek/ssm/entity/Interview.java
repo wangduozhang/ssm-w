@@ -8,6 +8,7 @@ public class Interview {
     private Tourist tourist;
     private Employee employee;
     private String time;
+    private String state;
 
     public Interview() {
     }
@@ -44,6 +45,14 @@ public class Interview {
         this.time = time;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Interview{" +
@@ -51,6 +60,7 @@ public class Interview {
                 ", tourist=" + tourist +
                 ", employee=" + employee +
                 ", time='" + time + '\'' +
+                ", state='" + state + '\'' +
                 '}';
     }
 }

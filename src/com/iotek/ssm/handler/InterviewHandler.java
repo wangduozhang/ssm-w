@@ -33,4 +33,17 @@ public class InterviewHandler {
         interviewService.insertInterview(interview,tid,eid);
         return "redirect:/vitae/findvitaebystate";
     }
+
+    @RequestMapping("findinterviewbytid")
+    public String findInterviewByTid(Integer tid,Model model){
+        List<Interview> interviews = interviewService.findInterviewByTid(tid);
+        model.addAttribute("interviews",interviews);
+        return "interview/showinterview";
+    }
+
+    @RequestMapping("gointerview")
+    public String goInterview(Integer id){
+        interviewService.editInterview(id);
+        return "forward:gointerview";
+    }
 }

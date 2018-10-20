@@ -9,8 +9,7 @@ public class Employee {
     private String password;
     private Branch branch;
     private Job job;
-    private double salary;
-    private double social;
+    private String induction;
 
     public Employee() {
     }
@@ -55,20 +54,12 @@ public class Employee {
         this.job = job;
     }
 
-    public double getSalary() {
-        return salary;
+    public String getInduction() {
+        return induction;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public double getSocial() {
-        return social;
-    }
-
-    public void setSocial(double social) {
-        this.social = social;
+    public void setInduction(String induction) {
+        this.induction = induction;
     }
 
     @Override
@@ -79,8 +70,7 @@ public class Employee {
                 ", password='" + password + '\'' +
                 ", branch=" + branch +
                 ", job=" + job +
-                ", salary=" + salary +
-                ", social=" + social +
+                ", induction='" + induction + '\'' +
                 '}';
     }
 }
